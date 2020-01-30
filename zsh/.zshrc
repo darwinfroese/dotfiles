@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/go/bin:$HOME/.cargo/bin:$HOME/dotnet:$PATH
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/go/bin:$HOME/.jx/bin:$HOME/dotnet:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/darwin/.oh-my-zsh"
@@ -7,8 +7,8 @@ export ZSH="/home/darwin/.oh-my-zsh"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="refined"
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="zeta"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -26,8 +26,14 @@ ZSH_THEME="refined"
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
 
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -62,10 +68,9 @@ ZSH_THEME="refined"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git k)
 
 source $ZSH/oh-my-zsh.sh
-source $HOME/.aliases
 
 # User configuration
 
@@ -99,3 +104,16 @@ export DOTNET_ROOT=$HOME/dotnet
 export FZF_DEFAULT_COMMAND="find -L"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+fpath=($fpath ~/.zsh/completion)
+
+# aliases
+alias k='kubectl'
+alias ll='\k'
+alias cat='bat'
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/darwin/google-cloud-sdk/path.zsh.inc' ]; then . '/home/darwin/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/darwin/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/darwin/google-cloud-sdk/completion.zsh.inc'; fi
